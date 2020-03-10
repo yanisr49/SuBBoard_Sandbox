@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 
 import API from "../../utils/API";
 import Thumbnail from "./Thumbnail"
+import './Dashboard.css'
 
 export class Dashboard extends Component {
 
