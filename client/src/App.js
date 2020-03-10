@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Dashboard } from "./components/Dashboard/Dashboard.js";
 import { SubForm } from "./components/SubForm/SubForm.js";
+import SideMenu from "./components/SideMenu/SideMenu.js";
 import { Login } from "./components/Login/Login.js";
 import { Signup } from "./components/Signup/Signup.js";
 import { PrivateRoute } from "./components/PrivateRoute.js";
@@ -13,10 +14,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-content">
+          <Route exact path="/" component={Login} />
+          
           <Switch>
-            <Route exact path="/" component={SubForm} />
             {/*
-            <Route exact path="/" component={Login} />
+            <SideMenu id="2" />
             <Route exact path="/signup" component={Signup} />
             <PrivateRoute path="/dashboard" component={Dashboard} />
             */}
