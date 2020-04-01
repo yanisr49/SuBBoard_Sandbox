@@ -14,9 +14,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-content">
-          
           <Switch>
-            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/" component={SubForm} />
+            <Route path="/dashboard" component={Dashboard} />
             {/*
             <SideMenu id="2" />
             <Route exact path="/signup" component={Signup} />
