@@ -3,7 +3,7 @@
     top:0;
     left: 0;
     height: 100%;
-    width: 200px;
+    width: 20%;
     list-style-type: none;
     background-color: #3A5199;
     margin: 0;
@@ -11,7 +11,7 @@
     color: white;
 }
 
-h1 {
+.sideMenu h1 {
     height: 50px;
     position: absolute;
     top: 7px;
@@ -19,26 +19,26 @@ h1 {
     left: 10px;
 }
 
-ul {
+.sideMenu ul {
     list-style-type: none;
     padding: 0;
     height: 100%;
     background-color: rgb(30,30,30);
     padding: 50px 0;
 }
-li{
+.sideMenu li{
     background-color: rgb(50,50,50);
     border-top: #3A5199 1px solid;
     border-bottom: #3A5199 1px solid;
 }
 
-li + li {
+.sideMenu li + li {
     border-bottom: #3A5199 1px solid;
     border-top: 0;
 }
 
 
-li a {
+.sideMenu li a {
     height: 60px;
     display: block;
     line-height: 40px;
@@ -49,12 +49,12 @@ li a {
   }
   
   /* Change the link color on hover */
-li a:hover {
+.sideMenu li a:hover {
     background-color: #3A5199;
     text-decoration: none;
     color: white;
 }
 
-.active, .active:hover {
+.sideMenu .active, .active:hover {
     background-color: rgb(31, 53, 121);
 }

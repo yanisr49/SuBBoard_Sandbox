@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 
 import API from "../../utils/API";
 import Thumbnail from "./Thumbnail"
-import './Dashboard.css'
+import SideMenu from '../SideMenu/SideMenu';
 
 import './Dashboard.css'
 
@@ -92,30 +92,33 @@ export class Dashboard extends Component {
         const { thumbnails } = this.state
 
         return (
-            <div className="section">
-                <div className="title">
-                    <h1>Mes abonnements</h1>
-                </div>
-                {
-                    thumbnails.map(({title, img, tags, start, end, price, promotion}, index) => (
-                        <Thumbnail
-                            title={title}
-                            img={img}
-                            tags={tags}
-                            start={start}
-                            end={end}
-                            price={price}
-                            promotion={promotion}
-                            key={index}
-                        />
-                    ))
-                }
-                
-                <div className="Dashboard">
-                    <h1>Dashboard</h1>
-                    <Button onClick={this.disconnect} block bsSize="large" type="submit">
-                        Se déconnecter
-                    </Button>
+            <div id="dashBoard">
+                <SideMenu id="1" />
+                <div className="section">
+                    <div className="title">
+                        <h1>Mes abonnements</h1>
+                    </div>
+                    {
+                        thumbnails.map(({title, img, tags, start, end, price, promotion}, index) => (
+                            <Thumbnail
+                                title={title}
+                                img={img}
+                                tags={tags}
+                                start={start}
+                                end={end}
+                                price={price}
+                                promotion={promotion}
+                                key={index}
+                            />
+                        ))
+                    }
+                    
+                    <div className="Dashboard">
+                        <h1>Dashboard</h1>
+                        <Button onClick={this.disconnect} block bsSize="large" type="submit">
+                            Se déconnecter
+                        </Button>
+                    </div>
                 </div>
             </div>
         );

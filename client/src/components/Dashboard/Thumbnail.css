@@ -94,7 +94,7 @@
 	border: 1px rgb(100,100,100) solid;
 }
 
-.tag {
+.thumbnail .tag {
 	display: inline-block;
 	height: 15px;
 	line-height: 15px;
@@ -108,7 +108,7 @@
 	color: white;
 }
 
-.tag+.tag {
+.thumbnail .tag+.tag {
 	margin-left: 5px;
 }
 

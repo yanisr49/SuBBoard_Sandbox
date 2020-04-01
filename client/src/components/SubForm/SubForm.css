@@ -1,3 +1,47 @@
-.test {
-    width: 200px!important;
+/* Section */
+
+#subForm .section {
+	text-align: left;
+	margin-left: 30%;
+	padding: 0 3%;
+	width: 60%;
+	height: 100%;
+}
+
+#subForm .labelDiv {
+	display: block;
+	font-weight: normal;
+}
+
+#subForm .labelDiv p, #subForm .promoAsk p {
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	font-size: 30px;
+	font-weight: normal;
+}
+
+#subForm #subTitle {
+	background-color: rgba(0, 0, 0, 0);
+	width: 100%;
+	height: 70px;
+	font-size: 70px;
+	border: none;
+	margin: 40px 0;
+
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	-o-box-shadow: none;
+	box-shadow: none;
+	filter:progid:DXImageTransform.Microsoft.Shadow(Strength=0);
+}
+
+#subForm .switch {
+	margin-left: 10px;
+	height: 25px;
+}
+
+#subForm .promoDropDown {
+	padding-left: 40px;
+	border-left: 5px #3A5199 solid;
 }
