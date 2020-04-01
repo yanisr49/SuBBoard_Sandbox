@@ -55,6 +55,12 @@ li a:hover {
     color: white;
 }
 
+li a:visited, a:link, a:active
+{
+    text-decoration: none;
+    color: white;
+}
+
 .active, .active:hover {
     background-color: rgb(31, 53, 121);
 }

@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 
 import API from "../../utils/API";
 import Thumbnail from "./Thumbnail"
+import SideMenu from "../SideMenu/SideMenu.js"
 import './Dashboard.css'
 
 export class Dashboard extends Component {
@@ -91,8 +92,8 @@ export class Dashboard extends Component {
 
         return (
             <div className="section">
+                <SideMenu id="0" />
                 <div className="title">
-                    <h1>Mes abonnements</h1>
                 </div>
                 {
                     thumbnails.map(({title, img, tags, start, end, price, promotion}, index) => (
@@ -108,13 +109,14 @@ export class Dashboard extends Component {
                         />
                     ))
                 }
-                
+                {/** 
                 <div className="Dashboard">
                     <h1>Dashboard</h1>
                     <Button onClick={this.disconnect} block bsSize="large" type="submit">
                         Se déconnecter
                     </Button>
                 </div>
+                */}
             </div>
         );
     }
