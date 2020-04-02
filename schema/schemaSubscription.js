@@ -16,14 +16,15 @@ const subscriptionSchema = mongoose.Schema(
         },
         logo_path: {
             type: String,
-            required: true,
+            required: false,
             default: "TODO"
         },
-        period: {
-            type: String,
-            required: true,
-            default: "TODO"
-        }
+        periods: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Period"
+            }
+        ]
     },
     { timestamps: { createdAt: "created_at" } }
 );

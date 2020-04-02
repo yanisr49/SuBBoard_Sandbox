@@ -41,6 +41,9 @@ app.use(function (req, res, next) {
 //Définition du routeur
 const router = express.Router();
 app.use("/user", router);
+require(__dirname + "/controllers/subscriptionController")(router);
+
+app.use("/subscription", router);
 require(__dirname + "/controllers/userController")(router);
 
 //Définition et mise en place du port d'écoute
