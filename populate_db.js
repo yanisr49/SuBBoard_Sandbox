@@ -32,7 +32,6 @@ module.exports = function () {
         }).then(() => {
             User.findByIdAndUpdate(userData._id, {lname:"test"}, function(err) {
                 if(err) console.log(err);
-                console.log("Successful deletion");
             });
         });
     });

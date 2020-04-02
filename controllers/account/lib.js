@@ -3,11 +3,19 @@ const passwordHash = require("password-hash");
 
 async function signup(req, res) {
 
-    const { password, email } = req.body;
-    if (!email || !password) {
+    const { email, password, lname, fname, birthdate, gender } = req.body;
+    if (!email || !password || !lname || !fname || !birthdate || !gender) {
         //Le cas où l'email ou bien le password ne serait pas soumit ou nul
         return res.status(400).json({
-            text: "Requête invalide"
+            text: "Requête invalid"
+        });
+    }
+
+    var newDate = new Date(birthdate);
+    if (newDate.getTime() != newDate.getTime()) {
+        //Le cas où l'email ou bien le password ne serait pas soumit ou nul
+        return res.status(400).json({
+            text: "birthdate invalid"
         });
     }
 
@@ -15,7 +23,10 @@ async function signup(req, res) {
     const user = {
         email,
         password: passwordHash.generate(password),
-        test: "yo"
+        lname,
+        fname,
+        birthdate,
+        gender
     };
 
     // On check en base si l'utilisateur existe déjà

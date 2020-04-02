@@ -120,7 +120,6 @@ export class Dashboard extends Component {
                         </Button>
                     </div>
                 </div>
-                */}
             </div>
         );
     }

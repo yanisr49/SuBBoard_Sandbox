@@ -15,13 +15,10 @@ class App extends Component {
       <div className="App">
         <div className="App-content">
           <Switch>
-            <Route exact path="/" component={SubForm} />
-            <Route path="/dashboard" component={Dashboard} />
-            {/*
-            <SideMenu id="2" />
+            <Route exact path="/" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <PrivateRoute path="/dashboard" component={Dashboard} />
-            */}
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/subscription" component={SubForm} />
           </Switch>
         </div>
       </div>
