@@ -30,7 +30,7 @@ module.exports = async function () {
     const periodData1 = new  Period(
         {
             start: new Date(),
-            end: new Date(),
+            end: (new Date()).setMonth(05),
             frequency: 'daily',
             price: '10.99',
             type: false
