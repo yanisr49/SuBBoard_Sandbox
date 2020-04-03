@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Button } from "react-bootstrap";
 
+import SubAPI from "../../utils/SubAPI";
 import API from "../../utils/API";
 import Thumbnail from "./Thumbnail"
 import SideMenu from '../SideMenu/SideMenu';
@@ -9,14 +10,24 @@ import './Dashboard.css'
 
 export class Dashboard extends Component {
 
-    disconnect = () => {
-        API.logout();
-        window.location = "/";
-    };
-
     state = {
-        thumbnails: this.generateThumbnails()
+        thumbnails: this.generateThumbnails(),
+        data : null
     }
+
+    componentWillMount() {
+        this.state.data = this.getData();
+    }
+    
+    getData = async () => {
+        try {
+            const { data } = await SubAPI.getSub(
+                localStorage.getItem("email")
+            );
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     componentDidMount() {
         Array.from(document.getElementsByClassName("wrapper")).forEach(element => {
@@ -117,12 +128,6 @@ export class Dashboard extends Component {
                         ))
                     }
                     <div className="thumbnail new" onClick={this.redirectNew}>+</div>
-                    <div className="Dashboard">
-                        <h1>Dashboard</h1>
-                        <Button onClick={this.disconnect} block bsSize="large" type="submit">
-                            Se déconnecter
-                        </Button>
-                    </div>
                 </div>
             </div>
         );

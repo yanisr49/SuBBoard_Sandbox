@@ -98,16 +98,37 @@ async function getSubs(req, res) {
             email
         });
 
-        console.log(findUser);
-        var findSub 
-        findUser.subscriptions.forEach(subscription => {
-            console.log(subscription);
-            findSub = Subscription.findById({subscription});
-            console.log(findSub);
-        })
+
+        const subs = [];
+        for (const sub of findUser.subscriptions) {
+            const findSub = await Subscription.findById({_id: sub});
+
+            const periods = [];
+            for(const period of findSub.periods) {
+                const findPeriod = await Period.findById({_id: period});
+                periods.push(
+                    {
+                        start: findPeriod.start,
+                        end: findPeriod.end,
+                        frequency: findPeriod.frequency,
+                        price: findPeriod.price,
+                        type: findPeriod.type
+                    }
+                );
+            }
+            subs.push(
+                {
+                    name: findSub.name, 
+                    note: findSub.note,
+                    website_link: findSub.website_link,
+                    logo_path: findSub.logo_path,
+                    periods: periods
+                }
+            );
+        }
         
         return res.status(200).json({
-            text: "Succès"
+            data: subs
         });
 
     } catch (error) {
