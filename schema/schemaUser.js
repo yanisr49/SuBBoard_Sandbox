@@ -14,19 +14,15 @@ const userSchema = mongoose.Schema(
         },
         lname: {
             type: String,
-            required: true
         },
         fname: {
             type: String,
-            required: true
         },
         birthdate: {
             type: Date,
-            required: true
         },
         gender: {
             type: String,
-            required: true
         },
         password: {
             type: String,
@@ -34,12 +30,10 @@ const userSchema = mongoose.Schema(
         },
         avatar_path: {
             type: String,
-            required: true,
             default: "TODO"
         },
         role: {
             type: String,
-            required: true,
             enum : ['Admin', 'Client'],
             default: 'Client'
         },

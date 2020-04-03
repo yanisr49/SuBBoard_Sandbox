@@ -5,7 +5,7 @@ const headers = {
 const burl = "http://localhost:8800";
 
 export default {
-    addSub: function(email, name, note, webSiteLink, startDate, endDate, price, promotion, startPromotion, endPromotion, promotionPrice) {
+    addSub: function(email, name, note, webSiteLink, startDate, endDate, frequency, price, promotion, startPromotion, endPromotion, promotionPrice) {
       return axios.post(
         `${burl}/subscription/add`,
         {
@@ -15,6 +15,7 @@ export default {
             webSiteLink,
             startDate,
             endDate,
+            frequency,
             price,
             promotion,
             startPromotion,

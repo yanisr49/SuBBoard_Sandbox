@@ -88,6 +88,10 @@ export class Dashboard extends Component {
         return result
     }
 
+    redirectNew = () => {
+        window.location = "/subscription";
+    }
+
     render() {
         const { thumbnails } = this.state
 
@@ -112,7 +116,7 @@ export class Dashboard extends Component {
                             />
                         ))
                     }
-                    
+                    <div className="thumbnail new" onClick={this.redirectNew}>+</div>
                     <div className="Dashboard">
                         <h1>Dashboard</h1>
                         <Button onClick={this.disconnect} block bsSize="large" type="submit">
