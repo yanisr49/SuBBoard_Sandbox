@@ -88,5 +88,35 @@ async function addSub(req, res) {
     }
 }
 
+async function getSubs(req, res) {
+
+    const { email } = req.body;
+
+    // On check en base si l'abonnement existe déjà
+    try {
+        const findUser = await User.findOne({
+            email
+        });
+
+        console.log(findUser);
+        var findSub 
+        findUser.subscriptions.forEach(subscription => {
+            console.log(subscription);
+            findSub = Subscription.findById({subscription});
+            console.log(findSub);
+        })
+        
+        return res.status(200).json({
+            text: "Succès"
+        });
+
+    } catch (error) {
+        return res.status(500).json({ error });
+    }
+}
+
+
+
 //On exporte nos deux fonctions
 exports.addSub = addSub;
+exports.getSubs = getSubs;
