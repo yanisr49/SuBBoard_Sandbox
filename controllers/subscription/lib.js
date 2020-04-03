@@ -108,6 +108,7 @@ async function getSubs(req, res) {
                 const findPeriod = await Period.findById({_id: period});
                 periods.push(
                     {
+                        id: findPeriod._id,
                         start: findPeriod.start,
                         end: findPeriod.end,
                         frequency: findPeriod.frequency,
@@ -118,6 +119,7 @@ async function getSubs(req, res) {
             }
             subs.push(
                 {
+                    id: findSub._id,
                     name: findSub.name, 
                     note: findSub.note,
                     website_link: findSub.website_link,
