@@ -98,16 +98,20 @@ async function getSubs(req, res) {
             email
         });
 
-        console.log(findUser);
-        var findSub 
-        findUser.subscriptions.forEach(subscription => {
-            console.log(subscription);
-            findSub = Subscription.findById({subscription});
-            console.log(findSub);
-        })
+        var allSubscription = []
+        for (const subscription of findUser.subscriptions) {
+            var ite = 0
+            const findSub = await Subscription.findById({_id : subscription});
+            for (const period of findSub.periods) {
+                const findPeriod = await Period.findById({_id : period});
+                findSub.periods[ite] = findPeriod
+                ite = ite + 1
+            }
+            allSubscription.push(findSub);
+        }
         
         return res.status(200).json({
-            text: "Succès"
+            allSubscription
         });
 
     } catch (error) {
