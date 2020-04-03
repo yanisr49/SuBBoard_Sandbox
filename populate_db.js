@@ -68,5 +68,23 @@ module.exports = async function () {
     userData.subscriptions.push(subData1);
     userData.subscriptions.push(subData2);
     await userData.save();
+    /*
+    subData.save(function(err) {
+        userData.subscriptions.push(subData);
+        userData.subscriptions.push(subData);
+        userData.save();
+        .then((data) => {
+            Sub.deleteOne({ name: 'Netflix' }, function (err) {
+                if(err) console.log(err);
+                console.log("Successful deletion");
+              });
+            console.log(data);
+        }).then(() => {
+            User.findByIdAndUpdate(userData._id, {lname:"test"}, function(err) {
+                if(err) console.log(err);
+            });
+        });
+    });*/
+
 }
 //:)

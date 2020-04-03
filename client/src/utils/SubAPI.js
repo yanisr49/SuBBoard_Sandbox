@@ -26,5 +26,17 @@ export default {
           headers: headers
         }
       );
+    },
+
+    getSub: function(email) {
+      return axios.post(
+        `${burl}/subscription/get`,
+        {
+          email
+        },
+        {
+          headers: headers
+        }
+      );
     }
 }

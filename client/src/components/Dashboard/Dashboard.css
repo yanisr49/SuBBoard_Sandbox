@@ -12,3 +12,9 @@ body {
 	width: 60%;
 	height: 100%;
 }
+
+#deconnect {
+	background-color: transparent;
+	line-height: 25px;
+	border: 0;
+}

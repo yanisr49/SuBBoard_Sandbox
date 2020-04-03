@@ -98,20 +98,39 @@ async function getSubs(req, res) {
             email
         });
 
-        var allSubscription = []
-        for (const subscription of findUser.subscriptions) {
-            var ite = 0
-            const findSub = await Subscription.findById({_id : subscription});
-            for (const period of findSub.periods) {
-                const findPeriod = await Period.findById({_id : period});
-                findSub.periods[ite] = findPeriod
-                ite = ite + 1
+
+        const subs = [];
+        for (const sub of findUser.subscriptions) {
+            const findSub = await Subscription.findById({_id: sub});
+
+            const periods = [];
+            for(const period of findSub.periods) {
+                const findPeriod = await Period.findById({_id: period});
+                periods.push(
+                    {
+                        id: findPeriod._id,
+                        start: findPeriod.start,
+                        end: findPeriod.end,
+                        frequency: findPeriod.frequency,
+                        price: findPeriod.price,
+                        type: findPeriod.type
+                    }
+                );
             }
-            allSubscription.push(findSub);
+            subs.push(
+                {
+                    id: findSub._id,
+                    name: findSub.name, 
+                    note: findSub.note,
+                    website_link: findSub.website_link,
+                    logo_path: findSub.logo_path,
+                    periods: periods
+                }
+            );
         }
         
         return res.status(200).json({
-            allSubscription
+            data: subs
         });
 
     } catch (error) {
