@@ -10,93 +10,33 @@ import './Dashboard.css'
 
 export class Dashboard extends Component {
 
-    state = {
-        thumbnails: this.generateThumbnails(),
-        data : null
+
+    constructor() {
+        super();
+        this.state = {
+            data : []
+        }
     }
 
-    componentWillMount() {
-        this.state.data = this.getData();
-    }
-    
     getData = async () => {
         try {
             const { data } = await SubAPI.getSub(
                 localStorage.getItem("email")
             );
+            this.setState({data: data.data});
         } catch (error) {
             console.error(error);
         }
     };
 
-    componentDidMount() {
+    async componentDidMount() {
         Array.from(document.getElementsByClassName("wrapper")).forEach(element => {
             if(element.clientHeight > 25) {
                 element.style.width = "250px";
                 element.childNodes.item(0).style.right = "0";
             }
         });
-    }
-
-    generateThumbnails() {
-        const result = []
-        result.push(
-            {
-                title: "Netflix", 
-                img: "/images/photo.png",
-                tags: [
-                    {
-                        name: "FAI",
-                        color: "#FFA500"
-                    },
-                    {
-                        name: "Box Internet",
-                        color: "#FF0000"
-                    },
-                    {
-                        name: "Box Internet",
-                        color: "#FF0000"
-                    },
-                    {
-                        name: "Box Internet",
-                        color: "#FF0000"
-                    },
-                    {
-                        name: "Box Internet",
-                        color: "#FF0000"
-                    },
-                    {
-                        name: "Box Internet",
-                        color: "#FF0000"
-                    }
-                ], 
-                start: "01/01/2020",
-                end: "03/03/2020", 
-                price: "10.99", 
-                promotion: "5.99"
-            }
-        )
-        result.push(
-            {
-                title: "Netflix", 
-                img: "/images/photo.png",
-                tags: [
-                    {
-                        name: "FAI",
-                        color: "#FFA500"
-                    },
-                    {
-                        name: "Box Internet",
-                        color: "#FF0000"
-                    }
-                ], 
-                start: "01/01/2020",
-                end: "03/03/2020", 
-                price: "10.99", 
-                promotion: "5.99"
-            }
-        )
-        return result
+        await this.getData();
     }
 
     redirectNew = () => {
@@ -104,7 +44,7 @@ export class Dashboard extends Component {
     }
 
     render() {
-        const { thumbnails } = this.state
+        const data = this.state.data;
 
         return (
             <div id="dashBoard">
@@ -114,15 +54,10 @@ export class Dashboard extends Component {
                         <h1>Mes abonnements</h1>
                     </div>
                     {
-                        thumbnails.map(({title, img, tags, start, end, price, promotion}, index) => (
+                        this.state.data.map(({id, name, logo_path, period}, index) => (
                             <Thumbnail
-                                title={title}
-                                img={img}
-                                tags={tags}
-                                start={start}
-                                end={end}
-                                price={price}
-                                promotion={promotion}
+                                name={name}
+                                period={period}
                                 key={index}
                             />
                         ))

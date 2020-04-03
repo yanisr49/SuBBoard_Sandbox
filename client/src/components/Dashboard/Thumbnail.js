@@ -2,12 +2,13 @@ import React from "react";
 
 import './Thumbnail.css'
 
-const Thumbnail = ({ title, img, tags, start, end, price, promotion}) => (
+const Thumbnail = ({ name, logo_path, period}) => (
     <div className="thumbnail">
         <div className="top">
-            <p className="title">{title}</p>
-            <img src={img} alt="logo"/>
+            <p className="title">{name}</p>
+            {/*<img src={logo_path} alt="logo"/>*/}
         </div>
+        {/*
         <div className="tags">
             <div className="wrapper">
                 <span className="points">...</span>
@@ -18,11 +19,13 @@ const Thumbnail = ({ title, img, tags, start, end, price, promotion}) => (
                 }
             </div>
         </div>
+        */}
         <div className="middle">
-            <p>Début : {start}</p>
-            <p>Fin : {end}</p>
-            <p>Prix : {price}€</p>
-            <p>Promo : {promotion}€</p>
+            <p>Début : {period.start}</p>
+            <p>Fin : {period.end}</p>
+            <p>Fréquence : {period.frequency}</p>
+            <p>Prix : {period.price}€</p>
+            <p>Promo : {period.type}€</p>
         </div>
     </div>
 )
