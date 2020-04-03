@@ -12,7 +12,7 @@ export class SubForm extends Component {
         startDate: new Date(),
         endDate: new Date(),
         price: "0",
-        promo: false, 
+        promotion: false, 
         promoStartDate: new Date(),
         promoEndDate: new Date(),
         promoPrice: "0"
@@ -25,15 +25,15 @@ export class SubForm extends Component {
             startDate: '',
             endDate: '',
             price: '',
-            promo: false, 
+            promotion: false, 
             promoStartDate: '',
             promoEndDate: '',
             promoPrice: ''
         };
     }
 
-    handleChange = (promo) => {
-        this.setState({ promo });
+    handleChange = (promotion) => {
+        this.setState({ promotion });
     }
 
     handleName = (event) => {
@@ -61,7 +61,7 @@ export class SubForm extends Component {
     }
 
     handlePromoPrice = (event) => {
-        this.setState({ event: event.target.value })
+        this.setState({ promoPrice: event.target.value })
     }
 
     send = async () => {
@@ -87,7 +87,7 @@ export class SubForm extends Component {
     render() {
         
         const { name, startDate, endDate, price, promoStartDate, promoEndDate, promoPrice } = this.props
-        const test = this.state.promo ? "block" : "none";
+        const test = this.state.promotion ? "block" : "none";
         
         return (
             <div id="subForm">
@@ -133,7 +133,7 @@ export class SubForm extends Component {
                             <Switch 
                                 className="switch" 
                                 onChange={this.handleChange} 
-                                checked={this.state.promo} 
+                                checked={this.state.promotion} 
                                 onColor="#3A5199" 
                             />
                         </div>
