@@ -14,6 +14,11 @@ const periodSchema = mongoose.Schema(
             type: Number,
             required: true
         },
+        frequency: {
+            type: String,
+            enum : ['daily', 'weekly', 'monthly', 'yearly'],
+            required: true
+        },
         type: {
             type: Boolean,
             required: true

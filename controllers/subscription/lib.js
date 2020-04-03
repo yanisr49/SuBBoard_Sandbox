@@ -5,7 +5,8 @@ const User = require("../../schema/schemaUser.js");
 
 async function addSub(req, res) {
 
-    const { email, name, note, webSiteLink, startDate, endDate, price, promotion, startPromotion, endPromotion, promotionPrice} = req.body;
+    const { email, name, note, webSiteLink, startDate, endDate, frequency, price, promotion, startPromotion, endPromotion, promotionPrice} = req.body;
+
     if (!name || !price) {
         //Le cas où le nom ne serait pas soumit ou nul
         return res.status(400).json({
@@ -17,6 +18,7 @@ async function addSub(req, res) {
     const period = {
         start : startDate,
         end : endDate,
+        frequency,
         price,
         type : false
     };

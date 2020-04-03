@@ -21,6 +21,12 @@
 	transition: box-shadow 0.1s, width 0.1s, height 0.1s, margin 0.1s;
 }
 
+.new {
+	text-align: center;
+	font-size: 115px;
+	color: grey;
+}
+
 .thumbnail .top {
 	display: block;
 	width: 100%;
