@@ -37,7 +37,23 @@ async function addPeriod(req, res) {
 async function delPeriod(req, res) {
     const { idSub, idPeriod } = req.body;
     try {
+
+        Period.deleteOne({ _id: idPeriod }, function (err) {
+            if(err) console.log(err);
+            console.log("Successful deletion");
+          });
+          
+        const findSub = await Subscription.findById({_id: idSub});
+
         
+        var index = 0;
+        for (const period of findSub.periods) {
+            if (period == idPeriod){
+                findSub.periods.splice(index, 1)
+                await findSub.save();
+            }
+            index = index + 1
+        }
         
         return res.status(200).json({
             text: "Successful deletion"
