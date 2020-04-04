@@ -20,7 +20,7 @@ export class Dashboard extends Component {
 
     getData = async () => {
         try {
-            const { data } = await SubAPI.getSub(
+            const { data } = await SubAPI.getSubs(
                 localStorage.getItem("email")
             );
             this.setState({data: data.data});
@@ -40,7 +40,7 @@ export class Dashboard extends Component {
     }
 
     redirectNew = () => {
-        window.location = "/subscription";
+        window.location = "/subscription/new";
     }
 
     render() {
