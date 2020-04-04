@@ -40,6 +40,7 @@ app.use(function (req, res, next) {
 
 //Définition du routeur
 const router = express.Router();
+
 app.use("/user", router);
 require(__dirname + "/controllers/subscriptionController")(router);
 

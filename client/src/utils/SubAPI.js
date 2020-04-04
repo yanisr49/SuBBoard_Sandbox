@@ -73,5 +73,22 @@ export default {
           headers: headers
         }
       );
+    },
+
+    addPeriod: function(idSub, start, end, price,frequency, isPromotion) {
+      return axios.post(
+        `${burl}/period/addPeriod`,
+        {
+          idSub, 
+          start, 
+          end, 
+          price,
+          frequency, 
+          isPromotion
+        },
+        {
+          headers: headers
+        }
+      );
     }
 }

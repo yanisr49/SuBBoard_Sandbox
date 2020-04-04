@@ -112,10 +112,11 @@ export class Subscription extends Component {
         return `${day}/${month}/${year}`;
     }
 
-    deletePeriod = async (id) => {
+    deletePeriod = async (idSub, idPeriod) => {
         try {
             const { data } = await SubAPI.deletePeriod(
-                id
+                idSub,
+                idPeriod
             );
             window.location.reload();
         } catch (error) {
@@ -135,8 +136,25 @@ export class Subscription extends Component {
         }
     };
 
+    addPeriod = async () => {
+        try {
+            const { data } = await SubAPI.addPeriod(
+                localStorage.getItem("idSub"),
+                this.state.startDate,
+                this.state.endDate,
+                this.state.price,
+                this.state.frequency,
+                this.state.promotion
+            );
+            window.location.reload();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     render() {
         const name = localStorage.getItem("name");
+        const idSub = localStorage.getItem("idSub");
         const link = "http://" + this.state.data.website_link;
         
         const { price } = this.props
@@ -158,7 +176,7 @@ export class Subscription extends Component {
                                 <p>Prix : {price}</p>
                                 <p>Fréquence : {frequency}</p>
                                 <p>Promo : {type ? ("oui") : ("non")} </p>
-                                <button onClick={() => this.deletePeriod(id)}>Supprimer</button>
+                                <button onClick={() => this.deletePeriod(idSub, id)}>Supprimer</button>
                             </div>
                         ))
                     }

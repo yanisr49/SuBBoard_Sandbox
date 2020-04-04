@@ -2,12 +2,12 @@ const Subscription = require("../../schema/schemaSubscription.js");
 const Period = require("../../schema/schemaPeriod.js");
 
 async function addPeriod(req, res) {
-    console.log("1")
-
+    console.log("1");
+/*
     const { idSub, start, end, price, frequency, isPromotion } = req.body;
 
     try {
-        console.log("1")
+        console.log("1");
 
         // Création d'un objet period
         const period = {
@@ -33,6 +33,7 @@ async function addPeriod(req, res) {
     } catch (error) {
         return res.status(500).json({ error });
     }
+    */
 }
 
 
