@@ -2,12 +2,10 @@ const Subscription = require("../../schema/schemaSubscription.js");
 const Period = require("../../schema/schemaPeriod.js");
 
 async function addPeriod(req, res) {
-    console.log("1")
 
     const { idSub, start, end, price, frequency, isPromotion } = req.body;
 
     try {
-        console.log("1")
 
         // Création d'un objet period
         const period = {
@@ -23,8 +21,8 @@ async function addPeriod(req, res) {
 
         const findSub = await Subscription.findById({_id: idSub});
 
-        findSub.periods.push(periodData)
-        await subData.save();
+        findSub.periods.push(periodData);
+        await findSub.save();
 
         return res.status(200).json({
             text: "Succès"
