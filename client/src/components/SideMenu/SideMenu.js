@@ -17,7 +17,7 @@ export class SideMenu extends Component {
                 <h1>SuBBoard</h1>
                 <ul>
                     {
-                        [["Accueil", '/'], ["Abonnements", '/dashboard'], ["Calendrier", ''], ["Statistiques", '']].map((name, index) => (
+                        [["Accueil", '/dashboard'], ["Abonnements", '/subscription/new'], ["Calendrier", ''], ["Statistiques", '']].map((name, index) => (
                             <li key={index}>
                                 <a href={name[1]} className={this.props.id==index ? "active" : ""}>{name[0]}</a>
                             </li>
