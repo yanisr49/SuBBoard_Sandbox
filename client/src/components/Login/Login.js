@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import API from "../../utils/API";
-
+import './Login.css'
 
 export class Login extends React.Component {
 
@@ -43,6 +43,7 @@ export class Login extends React.Component {
         const { email, password } = this.state;
         return (
             <div className="Login">
+                <div className="Top"></div>
                 <FormGroup controlId="email" bsSize="large">
                     <ControlLabel>Email</ControlLabel>
                     <FormControl
@@ -66,6 +67,7 @@ export class Login extends React.Component {
                 <Button onClick={this.sendToSignUp} block bsSize="large">
                     Inscription
                 </Button>
+                <div className="Bottom"></div>
             </div>
         );
     }

@@ -1,0 +1,17 @@
+.Top {
+    position: absolute;
+    background-color: purple;
+    height: 50px;
+    top:0;
+    left:0;
+    width: 100%;
+}
+
+.Bottom {
+    position: absolute;
+    background-color: purple;
+    height: 50px;
+    bottom:0;
+    left:0;
+    width: 100%;
+}
