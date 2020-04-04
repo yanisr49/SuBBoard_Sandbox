@@ -28,24 +28,20 @@ async function addSub(req, res) {
         note,
         website_link : webSiteLink
     }
-    
 
-
-    // On check en base si l'abonnement existe déjà
     try {
-        const findSub = await Subscription.findOne({
-            name
-        });
-        if (findSub) {
-            return res.status(400).json({
-                text: "L'abonnement existe déjà"
-            });
+        // On check en base si le user à déjà un abonnement du meme nom
+        const findUser = await User.findOne({ email });
+
+        for (const sub of findUser.subscriptions) {
+            const verifSub = await Subscription.findOne({ _id : sub });
+            if (verifSub.name == name) {
+                return res.status(400).json({
+                    text: "Cet user possède déjà un abonnement de ce nom"
+                });
+            }
         }
-    } catch (error) {
-        return res.status(500).json({ error });
-    }
 
-    try {
         // Sauvegarde de l'abonnement et les périodes en base
         const subData = new Subscription(subscription);
         await subData.save();
@@ -57,8 +53,6 @@ async function addSub(req, res) {
         subData.periods.push(periodData)
         await subData.save();
         
-
-        const findUser = await User.findOne({ email });
 
         findUser.subscriptions.push(subData),
         await findUser.save();

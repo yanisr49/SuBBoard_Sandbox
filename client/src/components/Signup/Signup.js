@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import API from "../../utils/API";
+import './Signup.css'
 
 export class Signup extends React.Component {
 
@@ -24,6 +25,10 @@ export class Signup extends React.Component {
         }
     };
 
+    sendToLogin = async () => {
+        window.location = "/";
+    };
+
     handleChange = (event) => {
         this.setState({
             [event.target.id]: event.target.value
@@ -33,6 +38,10 @@ export class Signup extends React.Component {
         const { email, password, cpassword } = this.state;
         return (
             <div className="Login">
+                <div className="TopBlue"></div>
+                <div className="TopBlack">
+                    <h1>SuBBoard - Inscription</h1>
+                </div>
                 <FormGroup controlId="email" bsSize="large">
                     <ControlLabel>Email</ControlLabel>
                     <FormControl
@@ -60,7 +69,12 @@ export class Signup extends React.Component {
                 </FormGroup>
                 <Button onClick={this.send} block bsSize="large" type="submit">
                     Inscription
-        </Button>
+                </Button>
+                <Button className="ButtonLogin" onClick={this.sendToLogin}>
+                    Connexion
+                </Button>
+                <div className="BottomBlack"></div>
+                <div className="BottomBlue"></div>
             </div>
         );
     }

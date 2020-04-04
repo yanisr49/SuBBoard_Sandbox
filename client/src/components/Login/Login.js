@@ -43,7 +43,10 @@ export class Login extends React.Component {
         const { email, password } = this.state;
         return (
             <div className="Login">
-                <div className="Top"></div>
+                <div className="TopBlue"></div>
+                <div className="TopBlack">
+                    <h1>SuBBoard - Connexion</h1>
+                </div>
                 <FormGroup controlId="email" bsSize="large">
                     <ControlLabel>Email</ControlLabel>
                     <FormControl
@@ -64,10 +67,11 @@ export class Login extends React.Component {
                 <Button onClick={this.send} block bsSize="large" type="submit">
                     Connexion
                 </Button>
-                <Button onClick={this.sendToSignUp} block bsSize="large">
+                <Button className="ButtonSignUp" onClick={this.sendToSignUp}>
                     Inscription
                 </Button>
-                <div className="Bottom"></div>
+                <div className="BottomBlack"></div>
+                <div className="BottomBlue"></div>
             </div>
         );
     }
