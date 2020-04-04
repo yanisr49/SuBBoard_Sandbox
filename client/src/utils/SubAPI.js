@@ -50,6 +50,19 @@ export default {
       );
     },
 
+    deleteSub: function(email, name) {
+      return axios.post(
+        `${burl}/subscription/del`,
+        {
+          email,
+          name
+        },
+        {
+          headers: headers
+        }
+      );
+    },
+
     deletePeriod: function(id) {
       return axios.post(
         `${burl}/period/del`,

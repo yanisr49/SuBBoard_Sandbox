@@ -1,11 +1,28 @@
 import React, {Component} from "react";
 import Switch from "react-switch";
 import SideMenu from '../SideMenu/SideMenu';
+import Popup from "reactjs-popup";
 
 import SubAPI from "../../utils/SubAPI";
 import "./Subscription.css"
 
 export class Subscription extends Component {
+
+    static defaultProps = {
+        price: "0",
+        startDate: '',
+        endDate: '',
+        frequency: 'monthly',
+        price: '',
+        promotion: false,
+        
+        startDateError: '',
+        displayStartDateError: "none",
+        endDateError: '',
+        displayEndDateError: "none",
+        priceError: '',
+        displayPriceError: "none"
+    }
 
     constructor() {
         super();
@@ -31,6 +48,58 @@ export class Subscription extends Component {
     })
     }
 
+    handlePromotion = (promotion) => {
+        this.setState({ promotion });
+    }
+
+    handleStartDate = (event) => {
+        this.setState({ startDate: event.target.value })
+
+        if(new Date(event.target.value).getTime() != new Date(event.target.value).getTime()) {
+            this.state.startDateError = "Le date choisit n'est pas valide";
+            this.state.displayStartDateError = "block";
+        }
+        else {
+            this.state.startDateError = '';
+            this.state.displayStartDateError = "none";
+        }
+    }
+
+    handleEndDate = (event) => {
+        this.setState({ endDate: event.target.value })
+
+        if(new Date(event.target.value).getTime() != new Date(event.target.value).getTime()) {
+            this.state.endDateError = "Le date choisit n'est pas valide";
+            this.state.displayEndDateError = "block";
+        }
+        else if (new Date(event.target.value) < new Date(this.state.startDate)) {
+            this.state.endDateError = "Le date de fin doit être après la date de début";
+            this.state.displayEndDateError = "block";
+        }
+        else {
+            this.state.endDateError = '';
+            this.state.displayEndDateError = "none";
+        }
+    }
+
+    handleFrequency = (event) => {
+        this.setState({ frequency: event.target.value })
+    }
+
+    handlePrice = (event) => {
+        if(event.target.value.search(/^\s*-?[1-9]\d*((\.|,)\d{1,2})?\s*$/) != -1)
+            this.setState({ price: event.target.value })
+            
+        if(event.target.value == '') {
+            this.state.priceError = 'Le champ Prix ne peux pas être vide';
+            this.state.displayPriceError = "block";
+        }
+        else {
+            this.state.priceError = '';
+            this.state.displayPriceError = "none";
+        }
+    }
+
     formattedDate = (date) => {
         const d = new Date(date);
         let month = String(d.getMonth() + 1);
@@ -54,14 +123,30 @@ export class Subscription extends Component {
         }
     };
 
+    deleteSub = async () => {
+        try {
+            const { data } = await SubAPI.deleteSub(
+                localStorage.getItem("email"),
+                localStorage.getItem("name")
+            );
+            window.location = "/dashboard";
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     render() {
         const name = localStorage.getItem("name");
         const link = "http://" + this.state.data.website_link;
+        
+        const { price } = this.props
+        const display = this.state.promotion ? "block" : "none";
 
         return (
             <div id="subForm">
                 <SideMenu id="1" />
                 <div className="section">
+                    <button onClick={this.deleteSub}>Supprimer l'abbonnement</button>
                     <h1 onClick={this.test}>{name}</h1>
                     {this.state.data.website_link && (<a href={link} target="_blank">Lien du site</a>)}
                     <p>Note</p>
@@ -77,6 +162,62 @@ export class Subscription extends Component {
                             </div>
                         ))
                     }
+                    <Popup 
+                        trigger={<button>Ajouter une période</button>}
+                        modal
+                        closeOnDocumentClick
+                    >
+                        <form>
+                            <h1>Nouvelle période</h1>
+                            <div className="labelDiv">
+                                <p>Du : </p>
+                                <input
+                                    type="date"
+                                    value={this.state.startDate}
+                                    onChange={this.handleStartDate}
+                                />
+                                <span className="errorMessage" style={{display: this.state.displayStartDateError}}>{this.state.startDateError}</span>
+                            </div>
+                            <div className="labelDiv">
+                                <p>Au : </p>
+                                <input
+                                    type="date"
+                                    value={this.state.endDate}
+                                    onChange={this.handleEndDate}
+                                />
+                                <span className="errorMessage" style={{display: this.state.displayEndDateError}}>{this.state.endDateError}</span>
+                            </div>
+                            <div className="labelDiv">
+                                <p>Période de paiement : </p>
+                                <select value={this.state.frequency} onChange={this.handleFrequency}>
+                                    <option value="daily">Quotidient</option>
+                                    <option value="weekly">Hebdomadaire</option>
+                                    <option value="monthly">Mensuelle</option>
+                                    <option value="yearly">Annuelle</option>
+                                </select>
+                            </div>
+                            <div className="labelDiv">
+                                <p>Prix : </p>
+                                <input
+                                    type="number"
+                                    placeholder={price}
+                                    value={this.state.price}
+                                    onChange={this.handlePrice}
+                                />
+                                <span className="errorMessage" style={{display: this.state.displayPriceError}}>{this.state.priceError}</span>
+                            </div>
+                            <div className="promoAsk">
+                                <p>Période promotionnelle ?</p>
+                                <Switch 
+                                    className="switch" 
+                                    onChange={this.handlePromotion} 
+                                    checked={this.state.promotion} 
+                                    onColor="#3A5199" 
+                                />
+                            </div>
+                        </form>
+                        <button onClick={this.send}>Valider</button>
+                    </Popup>
                 </div>
             </div>
         );

@@ -39,8 +39,9 @@ export class Dashboard extends Component {
         await this.getData();
     }
 
-    saveName = (name) => {
+    saveName = (id, name) => {
         localStorage.setItem("name", name);
+        localStorage.setItem("idSub", id);
         window.location = "/subscription/" + name;
     }
 
@@ -59,10 +60,12 @@ export class Dashboard extends Component {
                     {
                         this.state.data.map(({id, name, logo_path, period}, index) => (
                             <Thumbnail
+                                id={id}
                                 name={name}
                                 period={period}
                                 key={index}
                                 onClick={this.saveName}
+                                key={id}
                             />
                         ))
                     }
