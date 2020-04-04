@@ -39,10 +39,22 @@ export default {
 
     getSub: function(email, name) {
       return axios.post(
-        `${burl}/subscription/getAll`,
+        `${burl}/subscription/get`,
         {
           email,
           name
+        },
+        {
+          headers: headers
+        }
+      );
+    },
+
+    deletePeriod: function(id) {
+      return axios.post(
+        `${burl}/period/del`,
+        {
+          id
         },
         {
           headers: headers

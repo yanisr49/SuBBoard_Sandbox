@@ -2,8 +2,8 @@ import React from "react";
 
 import './Thumbnail.css'
 
-const Thumbnail = ({ name, logo_path, period}) => (
-    <div className="thumbnail">
+const Thumbnail = ({ name, logo_path, period, onClick}) => (
+    <div className="thumbnail" onClick={() => onClick(name)}>
         <div className="top">
             <p className="title">{name}</p>
             {/*<img src={logo_path} alt="logo"/>*/}
