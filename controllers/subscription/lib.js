@@ -5,7 +5,7 @@ const User = require("../../schema/schemaUser.js");
 
 async function addSub(req, res) {
 
-    const { email, name, note, webSiteLink, startDate, endDate, frequency, price, promotion, startPromotion, endPromotion, promotionPrice} = req.body;
+    const { email, name, note, webSiteLink, startDate, endDate, frequency, price, promotion } = req.body;
 
     if (!name || !price) {
         //Le cas où le nom ne serait pas soumit ou nul
@@ -20,17 +20,8 @@ async function addSub(req, res) {
         end : endDate,
         frequency,
         price,
-        type : false
+        type : promotion
     };
-    var periodPromotion
-    if (promotion == true){
-        periodPromotion = {
-            start : startPromotion,
-            end : endPromotion,
-            price : promotionPrice,
-            type : promotion
-        };
-    }
 
     const subscription = {
         name,
@@ -58,14 +49,6 @@ async function addSub(req, res) {
         // Sauvegarde de l'abonnement et les périodes en base
         const subData = new Subscription(subscription);
         await subData.save();
-
-        if (promotion == true){
-        
-            // ajoute aussi la période promotion
-            const periodPromData = new Period(periodPromotion);
-            await periodPromData.save();
-            subData.periods.push(periodPromData)
-        }
 
         const periodData = new Period(period);
         await periodData.save();

@@ -29,6 +29,10 @@ export class Login extends React.Component {
         }
     };
 
+    sendToSignUp = async () => {;
+        window.location = "/signup";
+    };
+
     handleChange = (event) => {
         this.setState({
             [event.target.id]: event.target.value
@@ -58,7 +62,10 @@ export class Login extends React.Component {
                 </FormGroup>
                 <Button onClick={this.send} block bsSize="large" type="submit">
                     Connexion
-            </Button>
+                </Button>
+                <Button onClick={this.sendToSignUp} block bsSize="large">
+                    Inscription
+                </Button>
             </div>
         );
     }
