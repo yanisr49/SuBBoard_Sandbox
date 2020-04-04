@@ -124,10 +124,10 @@ export class SubForm extends Component {
                 this.state.price,
                 this.state.promotion,
             );
-            window.location = "/dashboard";
         } catch (error) {
             console.error(error);
         }
+        window.location = "/dashboard";
     };
 
     render() {

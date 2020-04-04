@@ -4,7 +4,6 @@ const passwordHash = require("password-hash");
 async function signup(req, res) {
 
     const { email, password } = req.body;
-    console.log(password);
     if (!email || !password) {
         //Le cas où l'email ou bien le password ne serait pas soumit ou nul
         return res.status(400).json({

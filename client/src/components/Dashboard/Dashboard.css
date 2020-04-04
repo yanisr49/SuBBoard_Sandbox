@@ -18,7 +18,3 @@ body {
 	line-height: 25px;
 	border: 0;
 }
-
-div+div {
-	display: inline-block;
-}

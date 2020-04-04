@@ -43,11 +43,6 @@ export class Subscription extends Component {
         }
     }
 
-    test = () => {this.state.data.periods.map(({id, start, end, frequency, price, type}) => {
-        console.log(id);
-    })
-    }
-
     handlePromotion = (promotion) => {
         this.setState({ promotion });
     }
@@ -113,8 +108,6 @@ export class Subscription extends Component {
     }
 
     deletePeriod = async (idSub, idPeriod) => {
-        console.log(idSub);
-        console.log(idPeriod);
         try {
             const { data } = await SubAPI.deletePeriod(
                 idSub,
@@ -148,7 +141,6 @@ export class Subscription extends Component {
                 this.state.frequency,
                 this.state.promotion
             );
-            console.log("test");
             window.location.reload();
         } catch (error) {
             console.error(error);
@@ -178,9 +170,9 @@ export class Subscription extends Component {
                 <SideMenu id="1" />
                 <div className="section">
                     <button onClick={this.deleteSub}>Supprimer l'abbonnement</button>
-                    <h1 onClick={this.test}>{name}</h1>
+                    <h1>{name}</h1>
                     {this.state.data.website_link && (<a href={link} target="_blank">Lien du site</a>)}
-                    <p>Note</p>
+                    {this.state.data.note && (<p>{this.state.data.note}</p>)}
                     {
                         this.state.data.length ?? this.state.data.periods.map(({id, start, end, frequency, price, type}) => (
                             <div className="period" key={id}>
