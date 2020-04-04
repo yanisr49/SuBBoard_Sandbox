@@ -63,11 +63,12 @@ export default {
       );
     },
 
-    deletePeriod: function(id) {
+    deletePeriod: function(idSub, idPeriod) {
       return axios.post(
-        `${burl}/period/del`,
+        `${burl}/period/delPeriod`,
         {
-          id
+          idSub,
+          idPeriod
         },
         {
           headers: headers

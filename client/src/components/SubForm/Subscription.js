@@ -146,11 +146,23 @@ export class Subscription extends Component {
                 this.state.frequency,
                 this.state.promotion
             );
+            console.log("test");
             window.location.reload();
         } catch (error) {
             console.error(error);
         }
     };
+
+    engToFrFrequence = (frequency) => {
+        if(frequency == "daily")
+            return "Quotidient";
+        if(frequency == "weekly")
+            return "Hebdomadaire";
+        if(frequency == "monthly")
+            return "Mensuelle";
+        if(frequency == "yearly")
+            return "Annuelle";
+    }
 
     render() {
         const name = localStorage.getItem("name");
@@ -174,8 +186,8 @@ export class Subscription extends Component {
                                 <p>Du : {this.formattedDate(start)}</p>
                                 <p>Au : {this.formattedDate(end)}</p>
                                 <p>Prix : {price}</p>
-                                <p>Fréquence : {frequency}</p>
-                                <p>Promo : {type ? ("oui") : ("non")} </p>
+                                <p>Fréquence : {this.engToFrFrequence(frequency)}</p>
+                                <p>Promotion : {type ? ("oui") : ("non")} </p>
                                 <button onClick={() => this.deletePeriod(idSub, id)}>Supprimer</button>
                             </div>
                         ))
@@ -234,7 +246,7 @@ export class Subscription extends Component {
                                 />
                             </div>
                         </form>
-                        <button onClick={this.send}>Valider</button>
+                        <button onClick={this.addPeriod}>Valider</button>
                     </Popup>
                 </div>
             </div>

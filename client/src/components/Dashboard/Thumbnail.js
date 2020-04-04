@@ -2,7 +2,7 @@ import React from "react";
 
 import './Thumbnail.css'
 
-const Thumbnail = ({ id, name, logo_path, period, onClick}) => (
+const Thumbnail = ({ id, name, logo_path, period, onClick, frequencyFunction, dateFunction}) => (
     <div className="thumbnail" onClick={() => onClick(id, name)}>
         <div className="top">
             <p className="title">{name}</p>
@@ -21,11 +21,11 @@ const Thumbnail = ({ id, name, logo_path, period, onClick}) => (
         </div>
         */}
         <div className="middle">
-            <p>Début : {period.start}</p>
-            <p>Fin : {period.end}</p>
-            <p>Fréquence : {period.frequency}</p>
+            <p>Début : {dateFunction(period.start)}</p>
+            <p>Fin : {dateFunction(period.end)}</p>
+            <p>Fréquence : {frequencyFunction(period.frequency)}</p>
             <p>Prix : {period.price}€</p>
-            <p>Promo : {period.type}€</p>
+            <p>Période promotionelle : {period.type ? ("oui") : ("non")}</p>
         </div>
     </div>
 )

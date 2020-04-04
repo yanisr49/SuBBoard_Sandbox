@@ -49,6 +49,29 @@ export class Dashboard extends Component {
         window.location = "/subscription/new";
     }
 
+    engToFrFrequence = (frequency) => {
+        if(frequency == "daily")
+            return "Quotidient";
+        if(frequency == "weekly")
+            return "Hebdomadaire";
+        if(frequency == "monthly")
+            return "Mensuelle";
+        if(frequency == "yearly")
+            return "Annuelle";
+    }
+
+    formattedDate = (date) => {
+        const d = new Date(date);
+        let month = String(d.getMonth() + 1);
+        let day = String(d.getDate());
+        const year = String(d.getFullYear());
+      
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+      
+        return `${day}/${month}/${year}`;
+    }
+
     render() {
         return (
             <div id="dashBoard">
@@ -65,6 +88,8 @@ export class Dashboard extends Component {
                                 period={period}
                                 key={index}
                                 onClick={this.saveName}
+                                frequencyFunction={this.engToFrFrequence}
+                                dateFunction={this.formattedDate}
                                 key={id}
                             />
                         ))
