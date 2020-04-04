@@ -39,13 +39,16 @@ export class Dashboard extends Component {
         await this.getData();
     }
 
+    saveName = (name) => {
+        localStorage.setItem("name", name);
+        window.location = "/subscription/" + name;
+    }
+
     redirectNew = () => {
         window.location = "/subscription/new";
     }
 
     render() {
-        const data = this.state.data;
-
         return (
             <div id="dashBoard">
                 <SideMenu id="1" />
@@ -59,6 +62,7 @@ export class Dashboard extends Component {
                                 name={name}
                                 period={period}
                                 key={index}
+                                onClick={this.saveName}
                             />
                         ))
                     }

@@ -20,7 +20,7 @@ class App extends Component {
             <Route exact path="/signup" component={Signup} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/subscription/new" component={SubForm} />
-            <PrivateRoute exact path="/subscription" component={Subscription} />
+            <PrivateRoute exact path="/subscription/*" component={Subscription} />
           </Switch>
         </div>
       </div>
