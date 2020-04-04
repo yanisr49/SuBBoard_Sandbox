@@ -217,7 +217,7 @@ async function delSub(req, res) {
     }
 }
 
-//On exporte nos deux fonctions
+//On exporte nos 4 fonctions
 exports.addSub = addSub;
 exports.getSubs = getSubs;
 exports.getSub = getSub;

@@ -46,6 +46,9 @@ require(__dirname + "/controllers/subscriptionController")(router);
 app.use("/subscription", router);
 require(__dirname + "/controllers/userController")(router);
 
+app.use("/period", router);
+require(__dirname + "/controllers/periodController")(router);
+
 //Définition et mise en place du port d'écoute
 const port = 8800;
 app.listen(port, () => console.log(`Listening on port ${port}`));
