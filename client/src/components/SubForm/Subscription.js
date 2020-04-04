@@ -9,25 +9,25 @@ import "./Subscription.css"
 export class Subscription extends Component {
 
     static defaultProps = {
-        price: "0",
-        startDate: '',
-        endDate: '',
-        frequency: 'monthly',
-        price: '',
-        promotion: false,
-        
-        startDateError: '',
-        displayStartDateError: "none",
-        endDateError: '',
-        displayEndDateError: "none",
-        priceError: '',
-        displayPriceError: "none"
+        price: "0"
     }
 
     constructor() {
         super();
         this.state = {
-            data: []
+            data: [],
+            startDate: '2020-04-04',
+            endDate: '2020-04-04',
+            frequency: 'monthly',
+            price: '',
+            promotion: false,
+            
+            startDateError: '',
+            displayStartDateError: "none",
+            endDateError: '',
+            displayEndDateError: "none",
+            priceError: '',
+            displayPriceError: "none"
         };
     }
 
