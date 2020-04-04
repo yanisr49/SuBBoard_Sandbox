@@ -113,6 +113,8 @@ export class Subscription extends Component {
     }
 
     deletePeriod = async (idSub, idPeriod) => {
+        console.log(idSub);
+        console.log(idPeriod);
         try {
             const { data } = await SubAPI.deletePeriod(
                 idSub,
@@ -170,7 +172,6 @@ export class Subscription extends Component {
         const link = "http://" + this.state.data.website_link;
         
         const { price } = this.props
-        const display = this.state.promotion ? "block" : "none";
 
         return (
             <div id="subForm">
