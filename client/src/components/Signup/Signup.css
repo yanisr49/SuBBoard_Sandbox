@@ -1,0 +1,50 @@
+.TopBlue {
+    position: absolute;
+    background-color: #3A5199;
+    height: 40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.TopBlack {
+    position: absolute;
+    background-color: rgb(30,30,30);
+    height: 40px;
+    top:40px;
+    left:0;
+    width: 100%;
+}
+
+.TopBlack h1 {
+    color: white;
+    position: absolute;
+    height: 200px;
+    top: -42px;
+    left: 10px;
+}
+
+.BottomBlack {
+    position: absolute;
+    background-color: rgb(30,30,30);
+    height: 40px;
+    bottom:40px;
+    left:0;
+    width: 100%;
+}
+
+.BottomBlue {
+    position: absolute;
+    background-color: #3A5199;
+    height: 40px;
+    bottom:0;
+    left:0;
+    width: 100%;
+}
+
+.ButtonLogin{
+    
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
