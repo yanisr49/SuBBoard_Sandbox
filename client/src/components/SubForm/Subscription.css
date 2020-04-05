@@ -1,0 +1,74 @@
+.subscription .section {
+    position: relative;
+}
+
+.subscription .section .delSub {
+    border-radius: 4px;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+
+	-moz-box-shadow: 0px 0px 5px 0px #656565;
+	-webkit-box-shadow: 0px 0px 5px 0px #656565;
+	-o-box-shadow: 0px 0px 5px 0px #656565;
+	box-shadow: 0px 0px 5px 0px #656565;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=5);
+}
+
+.subscription .section h1 {
+    font-size: 70px;
+}
+
+.subscription .section .info, .subscription .section .period {
+    position: relative;
+    border-radius: 4px;
+    margin-top: 20px;
+    padding: 7px 0px 1px 10px;
+	border: 0;
+	text-align: left;
+	background-color: white;
+
+	-moz-box-shadow: 0px 0px 5px 0px #656565;
+	-webkit-box-shadow: 0px 0px 5px 0px #656565;
+	-o-box-shadow: 0px 0px 5px 0px #656565;
+	box-shadow: 0px 0px 5px 0px #656565;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=5);
+}
+
+.subscription .section .period button {
+    border-radius: 4px;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+
+	-moz-box-shadow: 0px 0px 5px 0px #656565;
+	-webkit-box-shadow: 0px 0px 5px 0px #656565;
+	-o-box-shadow: 0px 0px 5px 0px #656565;
+	box-shadow: 0px 0px 5px 0px #656565;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=5);
+}
+.subscription .section .addPeriod {
+    border-radius: 4px;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin-top: 20px;
+    background-color: #3A5199;
+
+	-moz-box-shadow: 0px 0px 5px 0px #656565;
+	-webkit-box-shadow: 0px 0px 5px 0px #656565;
+	-o-box-shadow: 0px 0px 5px 0px #656565;
+	box-shadow: 0px 0px 5px 0px #656565;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=5);
+}

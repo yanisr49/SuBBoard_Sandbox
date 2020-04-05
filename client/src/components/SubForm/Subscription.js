@@ -166,19 +166,21 @@ export class Subscription extends Component {
         const { price } = this.props
 
         return (
-            <div id="subForm">
+            <div id="subForm" className="subscription">
                 <SideMenu id="1" />
                 <div className="section">
-                    <button onClick={this.deleteSub}>Supprimer l'abbonnement</button>
+                    <button onClick={this.deleteSub} className="delSub">Supprimer l'abonnement</button>
                     <h1>{name}</h1>
-                    {this.state.data.website_link && (<a href={link} target="_blank">Lien du site</a>)}
-                    {this.state.data.note && (<p>{this.state.data.note}</p>)}
+                    <div className="info">
+                        {this.state.data.website_link && (<a href={link} target="_blank">Lien du site</a>)}
+                        {this.state.data.note && (<p>{this.state.data.note}</p>)}
+                    </div>
                     {
                         this.state.data.length ?? this.state.data.periods.map(({id, start, end, frequency, price, type}) => (
                             <div className="period" key={id}>
                                 <p>Du : {this.formattedDate(start)}</p>
                                 <p>Au : {this.formattedDate(end)}</p>
-                                <p>Prix : {price}</p>
+                                <p>Prix : {price}€</p>
                                 <p>Fréquence : {this.engToFrFrequence(frequency)}</p>
                                 <p>Promotion : {type ? ("oui") : ("non")} </p>
                                 <button onClick={() => this.deletePeriod(idSub, id)}>Supprimer</button>
@@ -186,7 +188,7 @@ export class Subscription extends Component {
                         ))
                     }
                     <Popup 
-                        trigger={<button>Ajouter une période</button>}
+                        trigger={<button className="addPeriod">Ajouter une période</button>}
                         modal
                         closeOnDocumentClick
                     >

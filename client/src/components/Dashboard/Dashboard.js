@@ -75,7 +75,7 @@ export class Dashboard extends Component {
     render() {
         return (
             <div id="dashBoard">
-                <SideMenu id="1" />
+                <SideMenu id="0" />
                 <div className="section">
                     <div className="title">
                         <h1>Mes abonnements</h1>
