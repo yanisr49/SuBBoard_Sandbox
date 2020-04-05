@@ -192,7 +192,7 @@ export class Subscription extends Component {
                         modal
                         closeOnDocumentClick
                     >
-                        <form>
+                        <div className="periodPopup">
                             <h2>Nouvelle période</h2>
                             <div className="labelDiv">
                                 <p>Du : </p>
@@ -240,8 +240,8 @@ export class Subscription extends Component {
                                     onColor="#3A5199" 
                                 />
                             </div>
-                        </form>
-                        <button onClick={this.addPeriod}>Créer</button>
+                            <button onClick={this.addPeriod}>Créer</button>
+                        </div>
                     </Popup>
                 </div>
             </div>
