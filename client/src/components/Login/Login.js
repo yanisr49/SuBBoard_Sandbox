@@ -7,15 +7,18 @@ export class Login extends React.Component {
 
     state = {
         email: "",
-        password: ""
+        password: "",
+        error: ""
     };
 
     send = async () => {
         const { email, password } = this.state;
         if (!email || email.length === 0) {
+            this.setState({error:"Le champ email est vide"});
             return;
         }
         if (!password || password.length === 0) {
+            this.setState({error:"Le champ password est vide"});
             return;
         }
 
@@ -25,6 +28,7 @@ export class Login extends React.Component {
             localStorage.setItem("email", email);
             window.location = "/dashboard";
         } catch (error) {
+            this.setState({error:"Mauvais identifiants"});
             console.error(error);
         }
     };
@@ -57,7 +61,7 @@ export class Login extends React.Component {
                     />
                 </FormGroup>
                 <FormGroup controlId="password" bsSize="large">
-                    <ControlLabel>Password</ControlLabel>
+                    <ControlLabel>Mot de passe</ControlLabel>
                     <FormControl
                         value={password}
                         onChange={this.handleChange}
@@ -70,6 +74,7 @@ export class Login extends React.Component {
                 <Button className="ButtonSignUp" onClick={this.sendToSignUp}>
                     Inscription
                 </Button>
+                <p className="ErrorMessage">{this.state.error}</p>
                 <div className="BottomBlack"></div>
                 <div className="BottomBlue"></div>
             </div>
