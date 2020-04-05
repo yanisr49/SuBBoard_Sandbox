@@ -166,7 +166,7 @@ export class Subscription extends Component {
         const { price } = this.props
 
         return (
-            <div id="subForm" className="subscription">
+            <div className="subscription">
                 <SideMenu id="1" />
                 <div className="section">
                     <button onClick={this.deleteSub} className="delSub">Supprimer l'abonnement</button>
@@ -193,7 +193,7 @@ export class Subscription extends Component {
                         closeOnDocumentClick
                     >
                         <form>
-                            <h1>Nouvelle période</h1>
+                            <h2>Nouvelle période</h2>
                             <div className="labelDiv">
                                 <p>Du : </p>
                                 <input
@@ -241,7 +241,7 @@ export class Subscription extends Component {
                                 />
                             </div>
                         </form>
-                        <button onClick={this.addPeriod}>Valider</button>
+                        <button onClick={this.addPeriod}>Créer</button>
                     </Popup>
                 </div>
             </div>

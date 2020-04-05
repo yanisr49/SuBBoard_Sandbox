@@ -147,9 +147,8 @@ export class SubForm extends Component {
                             onChange={this.handleName}
                             id="subTitle"
                         />
-                        <span className="errorMessage" style={{display: this.state.displayNameError}}>{this.state.nameError}</span>
+                        <div className="errorMessage" style={{display: this.state.displayNameError}}>{this.state.nameError}</div>
                         <div className="labelDiv">
-                            <p>Note : </p>
                             <textarea
                                 placeholder={note}
                                 value={this.state.note}
@@ -212,7 +211,7 @@ export class SubForm extends Component {
                             />
                         </div>
                     </form>
-                    <button onClick={this.send}>Valider</button>
+                    <button onClick={this.send} className="newSub">Créer</button>
                 </div>
             </div>
         );
